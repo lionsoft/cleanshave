@@ -1,5 +1,5 @@
+import {Injectable} from 'angular2/core';
 import {Http} from 'angular2/http';
-import {Injectable} from 'angular2/angular2';
 import {Person} from '../core/Person';
 
 /**
@@ -7,46 +7,15 @@ import {Person} from '../core/Person';
  */
 @Injectable()
 export class PeopleService {
-    people: Person[] = [];
-    //   person: Person = null;
 
     constructor(private _http: Http) { }
 
-    getPeople() {
-        //return an observable
-        return this._http.get('/api/people')
-            .catch((err) => {
-                console.log(err);
-                return [];
-            })
-            .map((response) => {
-                return response.json();
-            })
-            .map((people: Array<any>) => {
-                let result: Array<Person> = [];
-
-                if (people) {
-                    people.forEach((p) => {
-                        result.push(p)
-                    });
-                }
-                return result;
-            });
+    getPeople(): any {
+        return this._http.get('/api/people');
     }
 
     getPerson(id: number) {
-        return this._http.get('/api/people/' + id.toString())
-            .map((response) => {
-                return response.json();
-            })
-            .map((person: Person) => {
-                let result: any = null;
-
-                if (person) {
-                    result = person;
-                };
-                return result;
-            });
+        return this._http.get('/api/people/' + id.toString());
     }
 
     private _fetchFailed(error: any) {

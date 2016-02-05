@@ -15,14 +15,16 @@
                     <th>First</th>
                     <th>Last</th>
                     <th>Favorite Beverage</th>
+                    <th>Details</th>
                 </tr>
             </thead>
-            <tbody *ng-for="#person of people">
-                <tr>
+            <tbody *ngFor="#person of people">
+                <tr >
                     <th scope="row">{{person.id}}</th>
                     <td>{{person.first}}</td>
                     <td>{{person.last}}</td>
                     <td>{{person.favoriteBeer}}</td>
+                    <td><a [routerLink]="['/Detail', {id: person.id}]">link to user component</a></td>
                 </tr>
             </tbody>
         </table>

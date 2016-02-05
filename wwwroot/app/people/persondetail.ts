@@ -1,4 +1,5 @@
-import {Component, CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/angular2';
+import {Component} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {RouteParams, Router} from 'angular2/router';
 import {PeopleService} from './people.service';
 import {Person} from '../core/person';
@@ -14,8 +15,8 @@ export class PersonDetail{
 
 	constructor(private _peopleService: PeopleService,
 		private _routeParams : RouteParams, private _router: Router) {
-		let id = +this._routeParams.get('id');
+		let id = parseInt(this._routeParams.get('id'));
 		_peopleService.getPerson(id)
-			.subscribe(res => this.person = res);
+			.subscribe((res: any) => this.person = res.json());
 	}
 }

@@ -9,14 +9,20 @@
 </cache>
 
 @section scripts {
+
+@*
+    <script src="~/lib/es6-shim/es6-shim.js"></script>
+*@
+    <script src="~/lib/angular2/bundles/angular2-polyfills.js"></script>
     <script src="~/lib/systemjs/dist/system.src.js"></script>
+    <script src="~/lib/rxjs/bundles/Rx.js"></script>
     <script src="~/lib/angular2/bundles/angular2.dev.js"></script>
     <script src="~/lib/angular2/bundles/router.dev.js"></script>
     <script src="~/lib/angular2/bundles/http.dev.js"></script>
+
     <script>
-        System.config({
-            packages: {'app': {defaultExtension: 'js'}}
-        });
+        System.config({ packages: { app: { format: 'register', defaultExtension: 'js' } } });
+        
         System.import('./app/bootstrap').catch(console.log.bind(console));
     </script>
 }

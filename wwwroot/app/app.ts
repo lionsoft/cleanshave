@@ -1,4 +1,4 @@
-import * as ng from 'angular2/angular2';
+import * as ng from 'angular2/core';
 import * as router from 'angular2/router';
 import { Routes, APP_ROUTES } from './routes.config';
 
